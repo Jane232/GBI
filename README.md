@@ -8,4 +8,4 @@ die online simulierte Turingmaschine auf https://turingmachine.io/ aus der 1. Au
 
 Einfach den Code aus dem txt in das Feld auf der Webseite pasten und "Load Machine" klicken,
 
-Das gleiche mit der "reparierten" Turing Maschine von @Raenheit 
+Das gleiche mit der "reparierten" Turing Maschine von @Raenheit (https://github.com/Raenheit)
