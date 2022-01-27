@@ -1,0 +1,69 @@
+input: 'cbaaba'
+blank: ' '
+start state: z0
+table:
+
+  z0:
+    a: {write: ' ',L: n1}
+    b: {R: z0}
+    c: {R: z0}
+
+  z1:
+    a: {R: z1}
+    b: {write: ' ',R: z2}
+    c: {R: z1}
+    ' ': {write: c,L: z7}
+
+  z2:
+    ' ': {L: n4}
+    a: {write: ' ',L: z3}
+    b: {write: ' ',L: z4}
+    c: {write: ' ',L: z5}
+
+  z3:
+    ' ': {write: a ,R: z6}
+
+  z4:
+    ' ': {write: b ,R: z6}
+
+  z5:
+    ' ': {write: c ,R: z6}
+
+  z6:
+    ' ': {R: z2}
+
+  z7:
+    ' ': {L: n5}
+    a: {L: z7}
+    b: {L: z7}
+    c: {L: z7}
+
+
+  n4:
+    ' ': {L: z7}
+
+  n1:
+    b: {L: n1}
+    c: {L: n1}
+    ' ': {R: n2}
+
+  n2:
+    ' ': {R: z1}
+    b: {write: ' ' ,R: n3}
+    c: {R: n2}
+
+
+  n5:
+    a: {R: n3}
+    b: {R: n3}
+    c: {R: n3}
+    ' ': {R: n6}
+
+  n3:
+    ' ': {R: z2}
+    a: {R: n3}
+    b: {R: n3}
+    c: {R: n3}
+
+  n6:
+    ' ': {R: z0}
