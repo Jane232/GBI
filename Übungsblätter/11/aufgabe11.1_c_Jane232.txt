@@ -1,0 +1,103 @@
+input: 'cbbbaaacc'
+blank: ' '
+start state: z0
+table:
+
+  #ganz links suche a
+  z0:
+    a: {write: ' ',L: j1}
+    b: {R: z0}
+    c: {R: z0}
+  j1:
+    ' ': {R: z1}
+    a: {L: j1}
+    b: {L: j1}
+    c: {L: j1}
+
+  z1:
+    a: {R: z1}
+    #b: {write: ' ',R: j3}
+    b: {write: ' ',R: z2}
+    c: {R: z1}
+    ' ': {R: j2}
+  j2:
+    #' ': {L: j2.1}
+    ' ': {write: c,L: z2}
+    a: {R: z1}
+    #b: {write: ' ',R: j3}
+    b: {write: ' ',R: z2}
+    c: {R: z1}
+  #j2.1:
+  #  ' ': {write: c,L: z7}
+
+  #j3:
+  #  ' ': {R: z2}
+  #  a: {R: j3.1}
+  #  b: {R: j3.1}
+  #  c: {R: j3.1}
+    
+  #j3.1 ist kein echter Zustand er ist nur eine zusatz node um das unimplementierte nicht bewegen zu simulieren
+  j3.1:
+    a: {L: z2}
+    b: {L: z2}
+    c: {L: z2}
+    
+    ' ': {L: z2}
+    
+  z2:
+    ' ': {R: j4}
+    a: {write: ' ',L: z3}
+    b: {write: ' ',L: z4}
+    c: {write: ' ',L: z5}
+  j4:
+    ' ': {L: j4.1}
+    #a: {L: j3}
+    #b: {L: j3}
+    #c: {L: j3}
+    a: {L: z6}
+    b: {L: z6}
+    c: {L: z6}
+  j4.1:
+    ' ': {L: j4.2}
+    a: {L: z7}
+    #vielleicht auch dies: löscht irgendein a und springt zu j1 als wäre a in z0 gelöscht worden
+    #a: {write: ' ',L: j1}
+    b: {L: z7}
+    c: {L: z7}
+  j4.2:
+    ' ': {L: z7}        
+    a: {L: z7}
+    b: {L: z7}
+    c: {L: z7}
+  z3:
+    ' ': {write: a ,R: z6}
+  z4:
+    ' ': {write: b ,R: z6}
+  z5:
+    ' ': {write: c ,R: z6}
+  z6:
+    ' ': {R: z2}
+    a: {R: j3.1}
+    b: {R: j3.1}
+    c: {R: j3.1}
+
+  z7:
+    ' ': {L: j5}
+    a: {L: z7}
+    #vielleicht auch dies: löscht irgendein a und springt zu j1 als wäre a in z0 gelöscht worden
+    #a: {write: ' ',L: j1}
+    b: {L: z7}
+    c: {L: z7}
+    
+  j5:
+    ' ': {R: j6}
+    #a: {R: j3}
+    #b: {R: j3}
+    #c: {R: j3}
+    a: {R: z6}
+    b: {R: z6}
+    c: {R: z6}
+  j6:
+    ' ': {R: z0}
+    
+    
