@@ -1,0 +1,68 @@
+input: 'abbaa'
+blank: ' '
+start state: z0
+table:
+
+  z0:
+    a: {L: z1}
+    b: {R: z0}
+    c: {R: z0}
+
+  #z1:
+   # ' ': {R: z2}
+
+  z2:
+    ' ': {L: z7}
+    a: {write: ' ',L: z3}
+    b: {write: ' ',L: z4}
+    c: {write: ' ',L: z5}
+
+  z3:
+    ' ': {write: a ,R: z6}
+
+  z4:
+    ' ': {write: b ,R: z6}
+
+  z5:
+    ' ': {write: c ,R: z6}
+
+  z6:
+    ' ': {R: z2}
+
+  z7:
+    ' ': {L: z8}
+   
+  z8:
+    ' ': {L: z9}
+    a: {L: z8}
+    b: {L: z8}
+    c: {L: z8}
+   
+  z9:
+    ' ': {R: z10}
+    a: {R: z6}
+    b: {R: z6}
+    c: {R: z6}
+   
+  z10:
+    ' ': {R: z0}
+   
+  z1:
+    ' ': {R: z12}
+    b: {L: z1}
+    c: {L: z1}
+   
+  z12:
+    a: {write: ' ', R: z13}
+    b: {write: ' ', R: z11}
+    c: {R: z12}
+   
+  z13:
+    ' ': {write: c, R: z6}
+    a: {R: z13}
+    b: {write: ' ', R: z2}
+    c: {R: z13}
+   
+  z11:
+    a: {write: ' ', R: z2}
+    c: {R: z11}
